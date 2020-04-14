@@ -1,4 +1,4 @@
-package pers.alex.utils.rsa.rsa1;
+package pers.alex.utils.rsa.rsa;
 
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;

@@ -32,7 +32,7 @@
             }
 
             $.ajax({
-                url: "/rsa1/getPublicKey",
+                url: "/getPublicKey",
                 data:{},
                 type: "post",
                 dataType: "json",
@@ -46,7 +46,7 @@
                         userName = encrypt.encrypt(userName);
 
                         $.ajax({
-                            url: "/rsa1/login",
+                            url: "/login",
                             data:{userName: userName, password: password},
                             type: "post",
                             dataType: "json",

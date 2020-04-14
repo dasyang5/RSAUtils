@@ -1,4 +1,4 @@
-package pers.alex.utils.rsa.rsa1;
+package pers.alex.utils.rsa.rsa;
 
 import javax.servlet.http.HttpSession;
 import java.security.KeyPair;

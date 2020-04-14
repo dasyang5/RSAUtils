@@ -4,8 +4,8 @@ import com.alibaba.fastjson.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import pers.alex.utils.rsa.rsa1.RSASessionUtil;
-import pers.alex.utils.rsa.rsa1.RSAUtil;
+import pers.alex.utils.rsa.rsa.RSASessionUtil;
+import pers.alex.utils.rsa.rsa.RSAUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.PrivateKey;
@@ -15,12 +15,11 @@ import java.security.PrivateKey;
  * @date 4/13/2020 4:50 PM
  */
 @Controller
-@RequestMapping("/rsa1")
-public class RSA1Controller {
+public class RSAController {
 
     @RequestMapping("/")
     public String toDemo1() {
-        return "/demo1";
+        return "/demo";
     }
 
     /**
