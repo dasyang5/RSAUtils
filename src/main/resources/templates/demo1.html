@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Hello HTML</title>
+</head>
+<body>
+    <div>
+        <label>UserName</label>
+        <input id="userName">
+        <label>Password</label>
+        <input id="password">
+        <button id="submit" type="button">提交</button>
+    </div>
+
+    <script src="/jquery.js"></script>
+    <script src="/jsencrypt.min.js"></script>
+
+    <script>
+
+        $("#submit").click(function(){
+
+            var userName = $("#userName").val();
+
+            var password = $("#password").val();
+
+            if (userName.length <= 0) {
+                alert("Please enter the userName");
+            }
+
+            if (password.length <= 0) {
+                alert("Please enter the password");
+            }
+
+            $.ajax({
+                url: "/rsa1/getPublicKey",
+                data:{},
+                type: "post",
+                dataType: "json",
+                success: function (result) {
+                    if (result.code === 0) {
+
+                        var encrypt = new JSEncrypt();
+                        encrypt.setPublicKey(result.publicKey);
+
+                        password = encrypt.encrypt(password);
+                        userName = encrypt.encrypt(userName);
+
+                        $.ajax({
+                            url: "/rsa1/login",
+                            data:{userName: userName, password: password},
+                            type: "post",
+                            dataType: "json",
+                            success: function (result) {
+                                if (result.code === 0) {
+
+                                    alert("Success");
+
+                                } else {
+
+                                    alert("Failure")
+
+                                }
+                            }
+                        })
+                    } else {
+
+
+                    }
+                }
+            })
+        })
+
+
+    </script>
+</body>
+</html>
